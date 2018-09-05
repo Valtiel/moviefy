@@ -1,0 +1,73 @@
+PODS:
+  - Alamofire (4.7.3)
+  - AMPopTip (3.3.0)
+  - Cache (5.1.0)
+  - ChameleonFramework/Default (2.1.0)
+  - ChameleonFramework/Swift (2.1.0):
+    - ChameleonFramework/Default
+  - DateToolsSwift (4.0.0)
+  - PlayerKit (1.3.0)
+  - PureLayout (3.1.2)
+  - SDWebImage (4.4.2):
+    - SDWebImage/Core (= 4.4.2)
+  - SDWebImage/Core (4.4.2)
+  - Siesta (1.4.1):
+    - Siesta/Core (= 1.4.1)
+  - Siesta/Core (1.4.1)
+  - Siesta/UI (1.4.1):
+    - Siesta/Core
+  - SwiftyJSON (4.1.0)
+  - SwiftyUtils (2.0.0)
+
+DEPENDENCIES:
+  - Alamofire (~> 4.7)
+  - AMPopTip
+  - Cache
+  - ChameleonFramework/Swift (from `https://github.com/ViccAlexander/Chameleon.git`)
+  - DateToolsSwift
+  - PlayerKit
+  - PureLayout
+  - SDWebImage (~> 4.0)
+  - Siesta (~> 1.0)
+  - Siesta/UI (~> 1.0)
+  - SwiftyJSON (~> 4.0)
+  - SwiftyUtils
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - AMPopTip
+    - Cache
+    - DateToolsSwift
+    - PlayerKit
+    - PureLayout
+    - SDWebImage
+    - Siesta
+    - SwiftyJSON
+    - SwiftyUtils
+
+EXTERNAL SOURCES:
+  ChameleonFramework:
+    :git: https://github.com/ViccAlexander/Chameleon.git
+
+CHECKOUT OPTIONS:
+  ChameleonFramework:
+    :commit: 6dd284bde21ea2e7f9fd89bc36f40df16e16369d
+    :git: https://github.com/ViccAlexander/Chameleon.git
+
+SPEC CHECKSUMS:
+  Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
+  AMPopTip: 45f3f87362d76abe59b971d35e33eff4e56ac2ad
+  Cache: 7737c595aae7d94c7c0feca2c887288624e3b07e
+  ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
+  DateToolsSwift: 875d97ff9e3a5d54abdd67a269b3f51c757b71ab
+  PlayerKit: b23b30a9fe306fb8790dfd1a9f91352d38163c84
+  PureLayout: 4634d0b61e3b5021166e8ec7c18e9e0ca0720c8b
+  SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
+  Siesta: 867050feecf44d163f83272d9fc21553319c6dc0
+  SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
+  SwiftyUtils: ae914aa96b5672e9282904771e5e5b44d2e307d6
+
+PODFILE CHECKSUM: 782bfa97c0135f6f5bebd1e17ab984c76f4d5718
+
+COCOAPODS: 1.5.3

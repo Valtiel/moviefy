@@ -1,0 +1,6 @@
+framework module Pods_moviefyUITests {
+  umbrella header "Pods-moviefyUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
