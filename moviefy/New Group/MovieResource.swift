@@ -15,35 +15,45 @@ class MovieResource {
     let resource: Resource
 
     init(_ service: TheMovieDBAPI, baseResource: Resource) {
+        service.configure("/3/movie/*"){
+            $0.pipeline[.model].cacheUsing(CacheManager<[Movie]>())
+        }
         service.configureTransformer("/3/movie/*") {
-            Movie(json: $0.content as JSON)
+            try Movie(json: $0.content as JSON)
         }
         service.configureTransformer("/3/movie/reviews") {
-            ($0.content as JSON)["results"].arrayValue.map{Movie(json: $0)}
+            try ($0.content as JSON)["results"].arrayValue.map{try Movie(json: $0)}
         }
         service.configureTransformer("/3/movie/similar") {
-            ($0.content as JSON)["results"].arrayValue.map{Movie(json: $0)}
+            try ($0.content as JSON)["results"].arrayValue.map{try Movie(json: $0)}
         }
         service.configureTransformer("/3/movie/popular") {
-            ($0.content as JSON)["results"].arrayValue.map{Movie(json: $0)}
+            try ($0.content as JSON)["results"].arrayValue.map{try Movie(json: $0)}
         }
         service.configureTransformer("/3/movie/now_playing") {
-            ($0.content as JSON)["results"].arrayValue.map{Movie(json: $0)}
+            try ($0.content as JSON)["results"].arrayValue.map{try Movie(json: $0)}
         }
         service.configureTransformer("/3/movie/upcoming") {
-            ($0.content as JSON)["results"].arrayValue.map{Movie(json: $0)}
+            try ($0.content as JSON)["results"].arrayValue.map{try Movie(json: $0)}
         }
         service.configureTransformer("/3/movie/latest") {
-            ($0.content as JSON)["results"].arrayValue.map{Movie(json: $0)}
+            try ($0.content as JSON)["results"].arrayValue.map{try Movie(json: $0)}
         }
         service.configureTransformer("/3/movie/top_rated") {
-            ($0.content as JSON)["results"].arrayValue.map{Movie(json: $0)}
+            try ($0.content as JSON)["results"].arrayValue.map{try Movie(json: $0)}
+        }
+        service.configureTransformer("/3/movie/*/videos") {
+            try ($0.content as JSON)["results"].arrayValue.map{try Video(json: $0)}
         }
         resource = baseResource.child("/movie")
     }
     
     func movie(id: String) -> Resource {
         return resource.child(id)
+    }
+    
+    func videos(id: String) -> Resource {
+        return resource.child(id).child("videos")
     }
     
     func reviews(id: String) -> Resource {
@@ -54,7 +64,7 @@ class MovieResource {
         return resource.child(id).child("similar")
     }
     
-    func popular(id: String) -> Resource {
+    func popular() -> Resource {
         return resource.child("popular")
     }
     

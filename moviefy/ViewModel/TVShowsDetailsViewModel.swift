@@ -8,48 +8,60 @@
 
 import UIKit
 
-class TVShowsDetailsViewModel: NSObject {
-    var tvShow: TVShow!
+class TVShowsDetailsViewModel {
     
-    init(tvs: TVShow) {
-        super.init()
-        tvShow = tvs;
+    let tvShow: TVShow
+    
+    init(tvShow: TVShow) {
+        self.tvShow = tvShow
     }
     
     func detailsDataSource(for tableView: UITableView) -> Dictionary<String, [Any]> {
         var dictionary:Dictionary<String, [Any]> = .init()
-        var section:Int = 1
+        var section:Int = 0
         
         var sectionArray:[Any] = .init()
         
-        sectionArray.append(DetailsTitleTableViewCell.prepareCellWith(title: (tvShow?.name)!, on: tableView))
-        sectionArray.append(DetailsDescriptionTableViewCell.prepareCellWith(description: (tvShow?.overview)!, on: tableView))
+        sectionArray.append(DetailsTitleTableViewCell.prepareCellWith(title: (tvShow.name), on: tableView))
+        sectionArray.append(DetailsDescriptionTableViewCell.prepareCellWith(description: (tvShow.overview)!, on: tableView))
         dictionary[String(section)] = sectionArray
         
         section += 1
         sectionArray = .init()
         
-        if let tvShow = tvShow  {
-            sectionArray.append(DetailsTitleTableViewCell.prepareCellWith(title: "Information", on: tableView))
-            if let popularity = tvShow.popularity {
-                sectionArray.append(DetailsTitleDescTableViewCell.prepareCellWith(title: "Rating", description:"\(popularity)", on: tableView))
-            }
-  
-            sectionArray.append(DetailsTitleDescTableViewCell.prepareCellWith(title: "In Theaters", description: tvShow.firstAirDate!, on: tableView))
-            sectionArray.append(DetailsTitleDescTableViewCell.prepareCellWith(title: "Genre", description: "", on: tableView))
-//            sectionArray.append(DetailsTitleDescTableViewCell.prepareCellWith(title: "Produced by", description: (tvShow.productionCompanies?.first?.name)!, on: tableView))
-            sectionArray.append(DetailsTitleDescTableViewCell.prepareCellWith(title: "Run Time", description:"", on: tableView))
-//            sectionArray.append(DetailsTitleDescTableViewCell.prepareCellWith(title: "Website", description: tvShow.homepage!, on: tableView))
+        sectionArray.append(DetailsTitleTableViewCell.prepareCellWith(title: "Information", on: tableView))
+        if let popularity = tvShow.popularity {
+            sectionArray.append(DetailsTitleDescTableViewCell.prepareCellWith(title: "Rating", description:"\(popularity)", on: tableView))
         }
+        
+        sectionArray.append(DetailsTitleDescTableViewCell.prepareCellWith(title: "In Theaters", description: tvShow.firstAirDate!, on: tableView))
+        sectionArray.append(DetailsTitleDescTableViewCell.prepareCellWith(title: "Genre", description: "", on: tableView))
+        //            sectionArray.append(DetailsTitleDescTableViewCell.prepareCellWith(title: "Produced by", description: (tvShow.productionCompanies?.first?.name)!, on: tableView))
+        sectionArray.append(DetailsTitleDescTableViewCell.prepareCellWith(title: "Run Time", description:"", on: tableView))
+        //            sectionArray.append(DetailsTitleDescTableViewCell.prepareCellWith(title: "Website", description: tvShow.homepage!, on: tableView))
+        
         
         dictionary[String(section)] = sectionArray
         
         return dictionary
     }
     
-    func imageURL() -> URL {
-        print("https://image.tmdb.org/t/p/original\(tvShow!.backdropPath!)")
-        return URL.init(string: "https://image.tmdb.org/t/p/original\(tvShow!.backdropPath!)")!
+    func posterImageURL() -> URL? {
+        guard let url = URL(string: "https://image.tmdb.org/t/p/original\(tvShow.posterPath!)")  else {
+            return nil
+        }
+        return url
     }
-
+    
+    func backdropImageURL() -> URL? {
+        guard let backdropPath = tvShow.backdropPath else {
+            return nil
+        }
+        return URL(string: "\(baseImageURL)t/p/original\(backdropPath)")!
+    }
+    
+    func name() -> String {
+        return tvShow.name
+    }
+    
 }

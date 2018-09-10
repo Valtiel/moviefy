@@ -11,9 +11,9 @@ import Siesta
 
 class SpotlightListCollectionViewCell: UICollectionViewCell {
 
-    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var button: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
-    var dataSource:Array<TVShow> = Array()
+    var dataSource:Array<Any> = Array()
     var resource: Resource? {
         didSet {
             updateObservation(from: oldValue, to: resource)
@@ -23,7 +23,7 @@ class SpotlightListCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.register(UINib.init(nibName: "SpotlightMovieCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "SpotlightMovieCollectionViewCell")
+        collectionView.register(UINib(nibName: "SpotlightCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "SpotlightCollectionViewCell")
         
     }
     
@@ -38,6 +38,7 @@ class SpotlightListCollectionViewCell: UICollectionViewCell {
 }
 
 extension SpotlightListCollectionViewCell: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -47,8 +48,8 @@ extension SpotlightListCollectionViewCell: UICollectionViewDataSource, UICollect
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell:SpotlightMovieCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SpotlightMovieCollectionViewCell", for: indexPath) as! SpotlightMovieCollectionViewCell
-        cell.object = dataSource[indexPath.row]
+        let cell:SpotlightCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SpotlightCollectionViewCell", for: indexPath) as! SpotlightCollectionViewCell
+        cell.item = dataSource[indexPath.row]
         
         return cell
     }
@@ -60,7 +61,7 @@ extension SpotlightListCollectionViewCell: UICollectionViewDataSource, UICollect
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return self.frame.size
+        return CGSize(width: self.frame.size.width, height: 200)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

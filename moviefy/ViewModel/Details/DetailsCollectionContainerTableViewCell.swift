@@ -34,7 +34,7 @@ class DetailsCollectionContainerTableViewCell: UITableViewCell, UICollectionView
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return UICollectionViewCell.init()
+        return UICollectionViewCell()
     }
     
     class func prepareCellWith(array: [Any], on tableView: UITableView) -> DetailsCollectionContainerTableViewCell {

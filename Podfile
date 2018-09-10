@@ -6,17 +6,16 @@ def pods
   use_frameworks!
   # Pods for MiPromoSocios
   pod 'Cache'
-  pod 'PureLayout'
   pod 'SwiftyUtils'
   pod 'Siesta', '~> 1.0'
   pod 'SwiftyJSON', '~> 4.0'
   pod 'DateToolsSwift'
   pod 'AMPopTip'
-  pod 'PlayerKit'
-  pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git'
   pod 'Alamofire', '~> 4.7'
   pod 'Siesta/UI', '~> 1.0'
   pod 'SDWebImage', '~> 4.0'
+  pod 'YouTubePlayer'
+  
 end
 
 target 'moviefy' do

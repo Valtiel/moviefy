@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.13.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.9"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,17 +19,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="250" height="159"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C40-SK-hgn">
-                        <rect key="frame" x="10" y="0.0" width="240" height="20"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="20" id="mxb-28-lNr"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                        <color key="textColor" red="0.84399287560000003" green="0.84093722780000002" blue="0.12904630540000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="3K1-q5-YZS">
-                        <rect key="frame" x="0.0" y="20" width="250" height="139"/>
+                        <rect key="frame" x="0.0" y="34" width="250" height="125"/>
                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="kDt-qs-34Y">
                             <size key="itemSize" width="50" height="50"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -37,24 +28,33 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                     </collectionView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5OA-zc-5dH">
+                        <rect key="frame" x="16" y="0.0" width="218" height="34"/>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                        <color key="tintColor" red="0.8862745098" green="0.74509803919999995" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <state key="normal" title="Section title">
+                            <color key="titleColor" red="0.8862745098" green="0.74509803919999995" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                    </button>
                 </subviews>
             </view>
+            <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
             <constraints>
-                <constraint firstItem="C40-SK-hgn" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="3nQ-WS-K7v"/>
-                <constraint firstAttribute="trailing" secondItem="C40-SK-hgn" secondAttribute="trailing" id="4D0-mN-I04"/>
-                <constraint firstItem="3K1-q5-YZS" firstAttribute="top" secondItem="C40-SK-hgn" secondAttribute="bottom" id="OaH-9S-P0c"/>
+                <constraint firstItem="5OA-zc-5dH" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leadingMargin" id="HQN-eU-guQ"/>
+                <constraint firstAttribute="trailingMargin" secondItem="5OA-zc-5dH" secondAttribute="trailing" id="P0Q-Dx-ZQe"/>
+                <constraint firstItem="5OA-zc-5dH" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="UNm-7s-56p"/>
                 <constraint firstAttribute="trailing" secondItem="3K1-q5-YZS" secondAttribute="trailing" id="X4t-Od-QF4"/>
                 <constraint firstAttribute="bottom" secondItem="3K1-q5-YZS" secondAttribute="bottom" id="cdJ-zy-CXY"/>
                 <constraint firstItem="3K1-q5-YZS" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="irj-a3-gxJ"/>
-                <constraint firstItem="C40-SK-hgn" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="pFN-i0-28d"/>
+                <constraint firstItem="3K1-q5-YZS" firstAttribute="top" secondItem="5OA-zc-5dH" secondAttribute="bottom" id="u8L-hH-VxE"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="250" height="159"/>
             <connections>
+                <outlet property="button" destination="5OA-zc-5dH" id="FA1-k9-l9o"/>
                 <outlet property="collectionView" destination="3K1-q5-YZS" id="9YE-Pz-Dfw"/>
-                <outlet property="titleLabel" destination="C40-SK-hgn" id="cN9-5a-df6"/>
             </connections>
-            <point key="canvasLocation" x="297" y="196.5"/>
+            <point key="canvasLocation" x="296" y="195.6521739130435"/>
         </collectionViewCell>
     </objects>
 </document>

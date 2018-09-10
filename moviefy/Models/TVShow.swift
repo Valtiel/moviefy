@@ -172,8 +172,8 @@ extension TVShow {
         self.init(backdropPath: me.backdropPath, createdBy: me.createdBy, episodeRunTime: me.episodeRunTime, firstAirDate: me.firstAirDate, genres: me.genres, homepage: me.homepage, id: me.id, inProduction: me.inProduction, languages: me.languages, lastAirDate: me.lastAirDate, lastEpisodeToAir: me.lastEpisodeToAir, name: me.name, nextEpisodeToAir: me.nextEpisodeToAir, networks: me.networks, numberOfEpisodes: me.numberOfEpisodes, numberOfSeasons: me.numberOfSeasons, originCountry: me.originCountry, originalLanguage: me.originalLanguage, originalName: me.originalName, overview: me.overview, popularity: me.popularity, posterPath: me.posterPath, productionCompanies: me.productionCompanies, seasons: me.seasons, status: me.status, type: me.type, voteAverage: me.voteAverage, voteCount: me.voteCount)
     }
     
-    convenience init(jsonObject: JSON) throws{
-        let jsonData = try jsonObject.rawData()
+    convenience init(json: JSON) throws{
+        let jsonData = try json.rawData()
         try self.init(data: jsonData)
     }
     
@@ -210,8 +210,8 @@ extension CreatedBy {
         try self.init(data: data)
     }
     
-    convenience init(jsonObject: JSON) throws{
-        let jsonData = try jsonObject.rawData()
+    convenience init(json: JSON) throws{
+        let jsonData = try json.rawData()
         try self.init(data: jsonData)
     }
     
@@ -241,8 +241,8 @@ extension Episode {
         try self.init(data: data)
     }
     
-    convenience init(jsonObject: JSON) throws{
-        let jsonData = try jsonObject.rawData()
+    convenience init(json: JSON) throws{
+        let jsonData = try json.rawData()
         try self.init(data: jsonData)
     }
     
@@ -257,22 +257,4 @@ extension Episode {
     func jsonString(encoding: String.Encoding = .utf8) throws -> String? {
         return String(data: try self.jsonData(), encoding: encoding)
     }
-}
-
-// MARK: Encode/decode helpers
-
-func newJSONDecoder() -> JSONDecoder {
-    let decoder = JSONDecoder()
-    if #available(iOS 10.0, OSX 10.12, tvOS 10.0, watchOS 3.0, *) {
-        decoder.dateDecodingStrategy = .iso8601
-    }
-    return decoder
-}
-
-func newJSONEncoder() -> JSONEncoder {
-    let encoder = JSONEncoder()
-    if #available(iOS 10.0, OSX 10.12, tvOS 10.0, watchOS 3.0, *) {
-        encoder.dateEncodingStrategy = .iso8601
-    }
-    return encoder
 }
